@@ -8,6 +8,11 @@ export default function TodoList({ todos, setTodos }) {
 
   return (
     <ul>
+      {totalNumberOfTodos === 0 ? (
+        <li className=' h-full flex justify-center items-center text-black/50 text-2xl'>
+          Start by adding a todo!
+        </li>
+      ) : null}
       {todos.map((todo) => (
         <li
           onClick={() => {
