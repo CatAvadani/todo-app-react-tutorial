@@ -12,12 +12,12 @@ createRoot(document.getElementById('root')!).render(
       domain='https://thetodo.kinde.com'
       redirectUri={
         process.env.Env === 'production'
-          ? 'https://todo-app-react-tutorial.vercel.app/'
+          ? 'https://todo-app-react-tutorial.vercel.app'
           : 'http://localhost:5173'
       }
       logoutUri={
         process.env.Env === 'production'
-          ? 'https://todo-app-react-tutorial.vercel.app/'
+          ? 'https://todo-app-react-tutorial.vercel.app'
           : 'http://localhost:5173'
       }
     >
