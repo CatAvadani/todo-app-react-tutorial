@@ -1,9 +1,14 @@
-export default function DeleteButton({ id, setTodos }) {
+type DeleteButtonProps = {
+  id: number;
+  onDeleteTodo: (id: number) => void;
+};
+
+export default function DeleteButton({ id, onDeleteTodo }: DeleteButtonProps) {
   return (
     <button
       onClick={(e) => {
         e.stopPropagation();
-        setTodos((prev) => prev.filter((todo) => todo.id !== id));
+        onDeleteTodo(id);
       }}
     >
       ❌

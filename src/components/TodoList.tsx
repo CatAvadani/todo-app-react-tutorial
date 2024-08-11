@@ -1,30 +1,19 @@
-import { useState } from 'react';
+import { useTodosContext } from '../hooks/UseTodosContext';
 import DeleteButton from './DeleteButton';
 
-export default function TodoList({ todos, setTodos }) {
-  const [isCompleted, setIsCompleted] = useState<boolean>(false);
-
-  const totalNumberOfTodos = todos.length;
+export default function TodoList() {
+  const { todos, handleToggleTodo, handleDeleteTodo } = useTodosContext();
 
   return (
     <ul>
-      {totalNumberOfTodos === 0 ? (
+      {todos.length === 0 ? (
         <li className=' h-full flex justify-center items-center text-black/50 text-2xl'>
           Start by adding a todo!
         </li>
       ) : null}
       {todos.map((todo) => (
         <li
-          onClick={() => {
-            setTodos(
-              todos.map((t) => {
-                if (t.id === todo.id) {
-                  return { ...t, isCompleted: !t.isCompleted };
-                }
-                return t;
-              })
-            );
-          }}
+          onClick={() => handleToggleTodo(todo.id)}
           key={todo.id}
           className=' flex justify-between items-center px-4 h-[50px] text-[14px] cursor-pointer border-b border-black/[8%]'
         >
@@ -33,7 +22,7 @@ export default function TodoList({ todos, setTodos }) {
           >
             {todo.text}
           </span>{' '}
-          <DeleteButton id={todo.id} setTodos={setTodos} />
+          <DeleteButton id={todo.id} onDeleteTodo={handleDeleteTodo} />
         </li>
       ))}
     </ul>

@@ -1,7 +1,7 @@
-interface ButtonProps {
-  buttonType?: string;
-  children: string;
-}
+type ButtonProps = {
+  buttonType?: 'primary' | 'secondary';
+  children: React.ReactNode;
+};
 
 export default function Button({ buttonType, children }: ButtonProps) {
   return (
