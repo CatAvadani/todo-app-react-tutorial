@@ -5,18 +5,20 @@ import App from './App.tsx';
 import TodosContextProvider from './contexts/TodosContextProvider.tsx';
 import './index.css';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <KindeProvider
       clientId='72ea8bb8d7b949958e5e67a20876b50c'
       domain='https://thetodo.kinde.com'
       redirectUri={
-        process.env.Env === 'production'
+        isProduction
           ? 'https://todo-app-react-tutorial.vercel.app'
           : 'http://localhost:5173'
       }
       logoutUri={
-        process.env.Env === 'production'
+        isProduction
           ? 'https://todo-app-react-tutorial.vercel.app'
           : 'http://localhost:5173'
       }
