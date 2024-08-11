@@ -1,4 +1,4 @@
-import { useTodosContext } from '../contexts/TodosContextProvider';
+import { useTodosContext } from '../hooks/UseTodosContext';
 
 export default function Counter() {
   const { totalNumberOfTodos, numberOfCompletedTodos } = useTodosContext();
