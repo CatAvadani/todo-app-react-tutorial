@@ -22,6 +22,8 @@ createRoot(document.getElementById('root')!).render(
           ? 'https://todo-app-react-tutorial.vercel.app'
           : 'http://localhost:5173'
       }
+      // if we want to persist the session
+      isDangerouslyUseLocalStorage={true}
     >
       <TodosContextProvider>
         <App />
