@@ -1,8 +1,12 @@
-export default function Counter({ todos }) {
-  const completedTodos = todos.filter((todo) => todo.isCompleted).length;
+import { Props } from './Header';
+
+export default function Counter({
+  totalNumberOfTodos,
+  numberOfCompletedTodos,
+}: Props) {
   return (
     <p>
-      <b>{completedTodos}</b>/0 todos completed
+      <b>{numberOfCompletedTodos}</b>/{totalNumberOfTodos} todos completed
     </p>
   );
 }

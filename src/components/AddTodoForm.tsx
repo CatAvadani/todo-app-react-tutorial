@@ -1,25 +1,21 @@
 import { useState } from 'react';
 import Button from './Button';
 
-export default function AddTodoForm({ todos, setTodos }) {
+type AddTodoFormProps = {
+  handleAddTodo: (todoText: string) => void;
+};
+
+export default function AddTodoForm({ handleAddTodo }: AddTodoFormProps) {
   const [todoText, setTodoText] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (todos.length >= 3) {
-      alert('Log in to add more than 3 todos');
-      return;
-    } else {
-      setTodos((prev) => [
-        ...prev,
-        { id: Date.now(), text: todoText, isCompleted: false },
-      ]);
-      setTodoText('');
-    }
-  };
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleAddTodo(todoText);
+        setTodoText('');
+      }}
+    >
       <h2 className=' font-medium text-[#231d15]'>Add a todo</h2>
       <input
         value={todoText}
