@@ -1,9 +1,7 @@
-import { Props } from './Header';
+import { useTodosContext } from '../contexts/TodosContextProvider';
 
-export default function Counter({
-  totalNumberOfTodos,
-  numberOfCompletedTodos,
-}: Props) {
+export default function Counter() {
+  const { totalNumberOfTodos, numberOfCompletedTodos } = useTodosContext();
   return (
     <p>
       <b>{numberOfCompletedTodos}</b>/{totalNumberOfTodos} todos completed
